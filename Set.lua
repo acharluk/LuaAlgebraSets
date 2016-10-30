@@ -1,10 +1,13 @@
+--- @class Set
 --
--- Created by IntelliJ IDEA.
--- User: achar
--- Date: 30/10/2016
--- Time: 17:05
---
-
 local Set = {}
+Set.__mt = {
+}
+
+function Set:new(...)
+    local data = {...}
+    local obj = setmetatable({data = data}, Set.__mt)
+    return obj
+end
 
 return Set
