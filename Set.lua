@@ -17,19 +17,19 @@ function Set:new(...)
     local args = {...}
     local data = {}
 
-    if getmetatable(args[1]) == Set.__mt then
-        args = args[1].data
+    if #args == 1 and getmetatable(args[1]) == Set.__mt then
+       args = args[1].data
     end
 
     for i, v in ipairs(args) do
         if type(v) == "table" then
             if getmetatable(v) == Set.__mt then
-                data[i] = v
+                table.insert(data, Set:new(v))
             else
-                data[i] = Set:new(table.unpack(v))
+                table.insert(data, Set:new(table.unpack(v)))
             end
         else
-            data[i] = v
+            table.insert(data, v)
         end
     end
 
