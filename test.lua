@@ -5,9 +5,10 @@ local set2 = Set:new({20},30,40)
 
 print(set1, set2)
 
-local set3 = Set:new(set2,set1,2,{4},set2,{{5,6},8})
+local set3 = Set:new(set2,2,{4},set1,{{5,6},8})
 
 local set4 = Set:new(set2)
---set4.data[2] = 1
+print("Table:", type(set4:asTable()))
+
 print(set3,set4)
 

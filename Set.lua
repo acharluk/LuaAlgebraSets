@@ -2,7 +2,7 @@
 --
 local Set = {}
 Set.__mt = {
-
+    __index = Set,
     __tostring = function(set1)
         local str = "{ "
         for _, v in ipairs(set1.data) do
@@ -21,7 +21,7 @@ function Set:new(...)
        args = args[1].data
     end
 
-    for i, v in ipairs(args) do
+    for _, v in ipairs(args) do
         if type(v) == "table" then
             if getmetatable(v) == Set.__mt then
                 table.insert(data, Set:new(v))
@@ -35,6 +35,18 @@ function Set:new(...)
 
     local obj = setmetatable({data = data}, Set.__mt)
     return obj
+end
+
+function Set:asTable()
+    local result = {}
+    for _, v in ipairs(self.data) do
+        if type(v) == "number" then
+            table.insert(result, v)
+        else
+            table.insert(result, v:asTable())
+        end
+    end
+    return result
 end
 
 return Set
