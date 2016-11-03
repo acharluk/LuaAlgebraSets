@@ -49,4 +49,21 @@ function Set:asTable()
     return result
 end
 
+function Set:union(other)
+    local result = self:asTable()
+
+    for _, v in pairs(other.data) do
+        local copy = true
+        for _, v1 in pairs(result) do
+            if v == v1 then copy = false end
+        end
+
+        if copy then
+            table.insert(result, v)
+        end
+    end
+
+    return Set:new(table.unpack(result))
+end
+
 return Set
