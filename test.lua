@@ -11,4 +11,5 @@ local set4 = Set:new(set2)
 
 
 print(set3:union(set4))
+print(set3:intersection(set4))
 

@@ -66,4 +66,18 @@ function Set:union(other)
     return Set:new(table.unpack(result))
 end
 
+function Set:intersection(other)
+    local result = {}
+
+    for _, v in pairs(self.data) do
+       for _, v1 in pairs(other.data) do
+           if v == v1 then
+               table.insert(result, v)
+           end
+       end
+    end
+
+    return Set:new(table.unpack(result))
+end
+
 return Set
