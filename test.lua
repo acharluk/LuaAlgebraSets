@@ -9,7 +9,7 @@ local set3 = Set:new(set2,2,{4},set1,{{5,6},8})
 
 local set4 = Set:new(set2)
 
+print("\n\n",set3,"\n",set4,"\n\n")
 
-print(set3:union(set4))
-print(set3:intersection(set4))
+print("Union: ", set3 | set4)
 

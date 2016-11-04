@@ -3,6 +3,11 @@
 local Set = {}
 Set.__mt = {
     __index = Set,
+
+    __bor = function(set1, set2)
+        return set1:union(set2)
+    end,
+
     __tostring = function(set1)
         local str = "{ "
         for _, v in ipairs(set1.data) do
