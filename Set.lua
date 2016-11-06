@@ -7,6 +7,9 @@ Set.__mt = {
     __bor = function(set1, set2)
         return set1:union(set2)
     end,
+    __band = function(set1, set2)
+        return set1:intersection(set2)
+    end,
 
     __tostring = function(set1)
         local str = "{ "
@@ -69,6 +72,10 @@ function Set:union(other)
     end
 
     return Set:new(table.unpack(result))
+end
+
+function Set:intersection(other)
+    -- WIP -> __eq
 end
 
 function Set:intersection(other)
